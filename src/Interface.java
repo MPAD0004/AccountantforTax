@@ -25,19 +25,24 @@ public class Interface {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
 
-        // Add banner
-        JLabel banner = new JLabel("Enter your income for the financial year:");
-        banner.setPreferredSize(new Dimension(300, 50));
+        // Application header label
+        JLabel banner = new JLabel("Total income for the financial year 2024-2025:");
+        banner.setPreferredSize(new Dimension(500, 80));
         banner.setFont(new Font("Arial", Font.BOLD, 20));
 
-        // Bottom banner
+        // Bottom footer label
         JLabel taxLiteralLabel = new JLabel("Your Calculated Tax Liability: ");
         taxLiteralLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        // create text field
+        // Total income text field
         JTextField fieldTotalIncome = new JTextField();
         fieldTotalIncome.setFont(new Font("Arial", Font.PLAIN, 20));
-        fieldTotalIncome.setPreferredSize(new Dimension(200, 30)); // Example dimensions
+
+        // Field for cost of tools
+        JLabel labelToolsCost = new JLabel("Cost of Tools: ");
+        labelToolsCost.setFont(new Font("Arial", Font.PLAIN, 20));
+        JTextField fieldToolsCost = new JTextField();
+        fieldToolsCost.setFont(new Font("Arial", Font.PLAIN, 20));
 
 
         // Create a button
@@ -53,12 +58,12 @@ public class Interface {
                 double inputIncomeDouble = Double.parseDouble(userInputIncome);
 
                 // Calculate tax liability
-                TaxCalculator taxCalc = new TaxCalculator(inputIncomeDouble);
+                //TaxCalculator taxCalc = new TaxCalculator(inputIncomeDouble);
                 // TODO: Sanitise user input to make sure it is a number
-                String taxLiability = String.valueOf(taxCalc.getTaxLiability());
+                //String taxLiability = String.valueOf(taxCalc.getTaxLiability());
 
                 // Update UI with users tax liability
-                updateTaxLiability(taxLiteralLabel, taxLiability);
+                //updateTaxLiability(taxLiteralLabel, taxLiability);
             }
         });
 
@@ -66,10 +71,15 @@ public class Interface {
         frame.add(panel);
         panel.add(banner);
         panel.add(fieldTotalIncome);
+        panel.add(labelToolsCost, BorderLayout.WEST);
+        panel.add(fieldToolsCost, BorderLayout.CENTER);
         panel.add(calcButton);
         panel.add(taxLiteralLabel);
 
+        // pack and make visible
+        frame.pack();
         frame.setVisible(true);
+
     }
 
 }
